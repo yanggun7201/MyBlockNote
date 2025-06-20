@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "react-blocknote-app/node_modules/.bin/vite",
-    "build": "react-blocknote-app/node_modules/.bin/tsc -b && vite build",
-    "lint": "react-blocknote-app/node_modules/.bin/eslint .",
-    "preview": "react-blocknote-app/node_modules/.bin/vite preview"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@blocknote/core": "^0.31.3",
