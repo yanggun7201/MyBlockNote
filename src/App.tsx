@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from 'react-router-dom'; // Keep Link, remove Router, Routes, Route
 import "@blocknote/core/style.css";
 import "@blocknote/react/style.css";
 import "@blocknote/core/fonts/inter.css";
@@ -8,8 +9,10 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { useCreateBlockNote } from "@blocknote/react";
 import { type Block } from "@blocknote/core";
 import { codeBlock } from "@blocknote/code-block";
+// Remove OcrPage import, it's routed in main.tsx
 
-function App() {
+// EditorPage is the main content for the App component now
+function EditorPage() {
   const editor = useCreateBlockNote({
     codeBlock,
     initialContent: [
@@ -215,8 +218,9 @@ function App() {
   return (
     <div className="app-container">
       <div className="controls-container">
-        <button onClick={handleExportJson}>Export JSON</button>
-        <button onClick={triggerFileInput}>Import JSON</button>
+        <button onClick={handleExportJson} style={{ marginRight: '10px' }}>Export JSON</button>
+        <button onClick={triggerFileInput} style={{ marginRight: '10px' }}>Import JSON</button>
+        {/* The input is hidden, so no margin needed for it visually with buttons */}
         <input
           type="file"
           accept=".json"
@@ -224,12 +228,23 @@ function App() {
           onChange={handleImportJson}
           className="hidden-file-input"
         />
+        {/* Adjusted Link to OCR Page to match example styling */}
+        <div style={{ display: 'inline-block' }}> {/* Removed marginLeft here as buttons will have marginRight for consistency */}
+          <Link to="/ocr" style={{ textDecoration: 'none' }}>
+            <button>Go to OCR Page</button>
+          </Link>
+        </div>
       </div>
       <div className="editor-area">
         <BlockNoteView editor={editor} />
       </div>
     </div>
   );
+}
+
+// App component now just renders EditorPage. Routing is handled in main.tsx.
+function App() {
+  return <EditorPage />;
 }
 
 export default App;
