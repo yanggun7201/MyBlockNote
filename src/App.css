@@ -1,0 +1,79 @@
+/* General body styling (optional, can be in index.css or App.css) */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+#root {
+  width : 100%;
+}
+
+/* Container for the entire app content */
+.app-container {
+  max-width: 900px; /* Max width of the app content */
+  margin: 20px auto; /* Center the container with some margin on top/bottom */
+  padding: 20px; /* Padding inside the container */
+  background-color: #fff; /* White background for the content area */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Styling for the button controls area */
+.controls-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px; /* Space below the buttons, before the editor */
+  padding-bottom: 15px; /* Padding below buttons */
+  border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.controls-container button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff; /* Blue background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.controls-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styling for the BlockNote editor view */
+/* The .bn-container class is often used by BlockNote internally,
+   or you might need to wrap BlockNoteView in a div with this class
+   if direct styling of BlockNoteView component itself is tricky.
+   BlockNote's own CSS (@blocknote/core/style.css) handles most internal styling.
+   This is more for the container *around* the editor if needed.
+*/
+.editor-area {
+  border: 1px solid #ddd; /* Light border around the editor */
+  border-radius: 5px; /* Rounded corners for the editor area */
+  min-height: 300px; /* Minimum height to ensure editor is usable */
+  height: 24rem;
+  /* width is typically handled by BlockNote itself or its container */
+}
+
+/* Ensure BlockNoteView takes up available width if it's not doing so.
+   You might not need this if .app-container and .editor-area already constrain it.
+*/
+.bn-container {
+  /*width: 100% !important;*/
+  height: 100%;
+}
+
+.bn-editor {
+  height: 100%;
+  overflow: auto;
+  padding-block: 1rem;
+}
+
+/* Hide the file input element */
+.hidden-file-input {
+  display: none;
+}
