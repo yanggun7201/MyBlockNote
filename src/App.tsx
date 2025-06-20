@@ -3,14 +3,15 @@ import "@blocknote/core/style.css";
 import "@blocknote/react/style.css";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
-import "./App.css"; // Import App.css
+import "./App.css";
 import { BlockNoteView } from "@blocknote/mantine";
 import { useCreateBlockNote } from "@blocknote/react";
 import { type Block } from "@blocknote/core";
+import { codeBlock } from "@blocknote/code-block";
 
 function App() {
-  // Creates a new editor instance.
   const editor = useCreateBlockNote({
+    codeBlock,
     initialContent: [
       {
         type: "paragraph",
@@ -221,7 +222,7 @@ function App() {
           accept=".json"
           ref={fileInputRef}
           onChange={handleImportJson}
-          className="hidden-file-input" // Use class instead of inline style
+          className="hidden-file-input"
         />
       </div>
       <div className="editor-area">
