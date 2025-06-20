@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 import "@blocknote/core/style.css";
 import "@blocknote/react/style.css";
 import "./App.css"; // Import App.css
-import { BlockNoteEditor, Block } from "@blocknote/core";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import { BlockNoteEditor } from "@blocknote/core";
+import type { Block, PartialBlock } from "@blocknote/core";
+import { BlockNoteView, useCreateBlockNote } from "@blocknote/react";
 
 function App() {
-  const editor: BlockNoteEditor | null = useBlockNote({});
+  const editor: BlockNoteEditor | null = useCreateBlockNote({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleExportJson = async () => {
@@ -34,7 +35,7 @@ function App() {
         try {
           const jsonContent = loadEvent.target?.result;
           if (typeof jsonContent === "string") {
-            const parsedBlocks = JSON.parse(jsonContent);
+            const parsedBlocks: Block[] = JSON.parse(jsonContent);
             if (Array.isArray(parsedBlocks)) {
               editor.replaceBlocks(editor.document, parsedBlocks);
             } else {
