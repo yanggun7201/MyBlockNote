@@ -6,6 +6,10 @@ body {
   color: #333;
 }
 
+#root {
+  width : 100%;
+}
+
 /* Container for the entire app content */
 .app-container {
   max-width: 900px; /* Max width of the app content */
@@ -51,17 +55,23 @@ body {
   border: 1px solid #ddd; /* Light border around the editor */
   border-radius: 5px; /* Rounded corners for the editor area */
   min-height: 300px; /* Minimum height to ensure editor is usable */
+  height: 24rem;
   /* width is typically handled by BlockNote itself or its container */
 }
 
 /* Ensure BlockNoteView takes up available width if it's not doing so.
    You might not need this if .app-container and .editor-area already constrain it.
 */
-/*
 .bn-container {
-  width: 100% !important;
+  /*width: 100% !important;*/
+  height: 100%;
 }
-*/
+
+.bn-editor {
+  height: 100%;
+  overflow: auto;
+  padding-block: 1rem;
+}
 
 /* Hide the file input element */
 .hidden-file-input {
