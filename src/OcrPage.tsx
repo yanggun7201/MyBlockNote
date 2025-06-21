@@ -1,6 +1,6 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import scribe from '../../node_modules/scribe.js-ocr/scribe.js'; // Using explicit path
+import scribe from "scribe.js-ocr";
 
 const OcrPage: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -33,6 +33,7 @@ const OcrPage: React.FC = () => {
       console.log(`Attempting OCR with scribe.js-ocr for file: ${selectedFile.name}`);
       // The library expects an array of files.
       const result = await scribe.extractText([selectedFile]);
+      await scribe.extractText([selectedFile], { });
       console.log('Scribe.js-ocr raw result:', result);
 
       let extractedText = '';
@@ -95,9 +96,9 @@ const OcrPage: React.FC = () => {
       )}
 
       {isLoading && !ocrText && !error && (
-         <div style={{ marginTop: '20px' }}>
-           <p>Processing image with Scribe.js OCR...</p>
-         </div>
+        <div style={{ marginTop: '20px' }}>
+          <p>Processing image with Scribe.js OCR...</p>
+        </div>
       )}
 
       {ocrText && (

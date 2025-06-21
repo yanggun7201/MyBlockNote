@@ -4,7 +4,7 @@ declare module 'scribe.js-ocr' {
     // Add other properties from the result if known, e.g., confidence, pages
   }
   interface ScribeOcr {
-    extractText(files: (File | string)[], options?: any): Promise<ScribeOcrResult | ScribeOcrResult[] | string>; // Adjusted to include string for flexibility
+    extractText(files: (File | string)[], options?: ScribeOcrOptions): Promise<ScribeOcrResult | ScribeOcrResult[] | string>; // Adjusted to include string for flexibility
   }
   const scribe: ScribeOcr;
   export default scribe;

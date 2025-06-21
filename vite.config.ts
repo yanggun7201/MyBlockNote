@@ -9,6 +9,7 @@ export default defineConfig({
   },
   // optimizeDeps needed for some CJS/ESM interop issues, might help here too
   optimizeDeps: {
+    exclude: ['scribe.js-ocr'],
     esbuildOptions: {
       target: 'es2022'
     }
